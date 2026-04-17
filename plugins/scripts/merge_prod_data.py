@@ -37,11 +37,18 @@ def merge_prod_data(
             logger.error(f"Error reading data from {path}: {str(e)}")
             raise e
 
-    df_nomination = pd.read_parquet(nomination_path)[["log", "EQUIPE"]]
-    df_prod = df_prod.merge(
-        df_nomination, left_on="Agent", right_on="log", how="inner"
-    )  # without EQUIPE
-    df_prod = df_prod.drop(columns=["log"])
+    df_nomination = pd.read_parquet(nomination_path)
+    df_prod = df_prod.merge(df_nomination, left_on="Agent", right_on="log", how="inner")
+    df_prod = df_prod.drop(columns=["log", "Agent_x"])
+    df_prod = df_prod.rename(columns={"Agent_y": "Agent"})
+
+    cols = (
+        ["Date"]
+        + ["Agent"]
+        + [col for col in df_prod.columns if col != "Agent" and col != "Date"]
+    )  # organize columns with Agent first and then the rest
+    df_prod = df_prod[cols]
+    df_prod = df_prod.sort_values(["Agent", "Date"]).reset_index(drop=True)
 
     processed_dir = os.path.join(BASE_DIR, "processed")
     os.makedirs(processed_dir, exist_ok=True)
