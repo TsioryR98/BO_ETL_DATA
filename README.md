@@ -15,7 +15,7 @@ Raw Excel Files  →  Airflow Tasks (Extract + Transform)  →  Normalized Parqu
 
 The Airflow DAG `production_etl_dag.py` handles the end-to-end orchestration.
 
-> **Convention de nommage :** Naming Convention: All agent-related columns are normalized to lowercase and stripped of
+> ** Naming Convention :** All agent-related columns are normalized to lowercase and stripped of
 > leading/trailing whitespace `(str.lower().str.strip())`. Dates are processed using standardized normalizers to ensure
 > cross-source consistency.
 >
