@@ -1,0 +1,12 @@
+/logs
+/python_venv
+airflow.db
+airflow.cfg
+airflow.db-shm
+airflow.db-wal
+__pycache__
+/data/raw
+/data/tmp
+.idea
+.ipynb_checkpoints/
+.env

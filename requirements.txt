@@ -1,0 +1,31 @@
+
+#Core Orchestration (Airflow 3)
+apache-airflow==3.1.8
+apache-airflow-providers-google
+apache-airflow-providers-fab
+
+#Data Processing & Analysis
+pandas
+pyarrow
+numpy
+seaborn==0.13.2
+matplotlib
+notebook
+ydata-profiling
+
+
+#Google Cloud Platform---
+google-cloud-storage
+google-cloud-bigquery
+
+
+#Database & Connectivity
+sqlalchemy
+psycopg2-binary
+python-dotenv
+
+#Validation & Quality
+pydantic
+ruff
+
+openpyxl
